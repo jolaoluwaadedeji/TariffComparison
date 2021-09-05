@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TariffComparison.Domain;
 using TariffComparison.Domain.Models;
-
+using TariffComparison.Domain.Services;
 
 namespace TariffComparison.App
 {
@@ -12,11 +12,11 @@ namespace TariffComparison.App
         {
             try
             {
-                var productComparer = new Domain.Services.TariffComparison();
+                var productComparer = new TariffComparer();
                 var products = productComparer.Compare(3500.00M);
-                foreach (Product product in products)
+                foreach (IProduct product in products)
                 {
-                    Console.WriteLine($"Product Name: {product.TariffName}, Annual Cost: {product.AnnualCost}");
+                    Console.WriteLine($"Product Name: {product.TariffName}, Annual Cost: {Convert.ToInt32(product.AnnualCost)}");
                 }
                 Console.ReadLine();
             }

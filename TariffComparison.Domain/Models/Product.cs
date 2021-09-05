@@ -4,9 +4,10 @@ using System.Text;
 
 namespace TariffComparison.Domain.Models
 {
-    public class Product
+    public interface IProduct
     {
-        public string TariffName { get; set; }
-        public decimal AnnualCost { get; set; }
+        string TariffName { get;}
+        decimal AnnualCost { get;}
+        decimal CalculateTariff(decimal consumption);
     }
 }
