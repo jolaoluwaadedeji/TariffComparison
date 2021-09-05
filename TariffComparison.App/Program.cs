@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using TariffComparison.Domain;
 using TariffComparison.Domain.Models;
-using TariffComparison.Domain.Services;
 
-namespace TariffComparison
+
+namespace TariffComparison.App
 {
     class Program
     {
-        private static readonly ITariffComparerService _tariffComparerService = new TariffComparerService(new TariffComparer());
         static void Main(string[] args)
         {
             try
             {
-                var products = _tariffComparerService.CompareCost(6000.00M);
+                var productComparer = new Domain.Services.TariffComparison();
+                var products = productComparer.Compare(3500.00M);
                 foreach (Product product in products)
                 {
-                    Console.WriteLine($"Annual cost for {product.TariffName} is {product.AnnualCost}");
+                    Console.WriteLine($"Product Name: {product.TariffName}, Annual Cost: {product.AnnualCost}");
                 }
                 Console.ReadLine();
             }
