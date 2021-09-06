@@ -6,7 +6,8 @@ namespace TariffComparison.Domain.Models
 {
     public interface IProduct
     {
-        public string TariffName { get; }
+        string TariffName { get;}
         decimal AnnualCost { get;}
+        decimal CalculateTariff(decimal consumption);
     }
 }

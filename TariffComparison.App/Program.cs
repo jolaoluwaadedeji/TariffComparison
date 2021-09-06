@@ -1,16 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using TariffComparison.Domain;
+using TariffComparison.Domain.Models;
 using TariffComparison.Domain.Services;
 
-namespace TariffComparison
+namespace TariffComparison.App
 {
     class Program
     {
-        private static readonly ITariffComparer _tariffComparer = new TariffComparer();
         static void Main(string[] args)
         {
-            var result = _tariffComparer.CompareCost(new List<decimal>() {3500.00M, 4500.00M, 6000.00M });
+            try
+            {
+                var productComparer = new TariffComparer();
+                var products = productComparer.CompareTariff(3500.00M);
+                foreach (IProduct product in products)
+                {
+                    Console.WriteLine($"Product Name: {product.TariffName}, Annual Cost: {Convert.ToInt32(product.AnnualCost)}");
+                }
+                Console.ReadLine();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred. Details => Message: {ex.Message}, Stack Trace: {ex.StackTrace}");
+            }           
         }
     }
 }
