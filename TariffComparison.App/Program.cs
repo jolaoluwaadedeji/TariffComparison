@@ -13,7 +13,7 @@ namespace TariffComparison.App
             try
             {
                 var productComparer = new TariffComparer();
-                var products = productComparer.Compare(3500.00M);
+                var products = productComparer.CompareTariff(3500.00M);
                 foreach (IProduct product in products)
                 {
                     Console.WriteLine($"Product Name: {product.TariffName}, Annual Cost: {Convert.ToInt32(product.AnnualCost)}");

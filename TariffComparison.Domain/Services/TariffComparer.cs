@@ -8,7 +8,7 @@ namespace TariffComparison.Domain.Services
 {
    public class TariffComparer
     {
-        public IList<IProduct> Compare(decimal consumption)
+        public IList<IProduct> CompareTariff(decimal consumption)
         {
             IProduct productA = new ProductA(consumption);
             IProduct productB = new ProductB(consumption);
